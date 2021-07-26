@@ -208,7 +208,6 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
                     await asyncio.sleep(1)
             if upload_identifier in stop_uploads:
                 return sent_files
-            serialize = False
             for a, (filepath, filename) in enumerate(to_upload):
                 while True:
                     if a:
