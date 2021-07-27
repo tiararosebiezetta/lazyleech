@@ -188,9 +188,13 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
         with tempfile.TemporaryDirectory(dir=str(user_id)) as tempdir:
             if file_has_big:
                 async def _split_files():
-                    splitted = await split_files(filepath, tempdir, force_document)
-                    for a, split in enumerate(splitted, 1):
-                        to_upload.append((split, filename + f' (part {a})'))
+                    rf = sf(filepath, filename, user_id)
+                    await upload_wait.edit_text(f'Splitting {html.escape(filename)}..., Please wait')
+                    if rf is not None:
+                        a = 0
+                        for i in natsorted(os.listdir(rf)):
+                            a += 1
+                            to_upload.append((rf+'/'+i, filename+f' (part {a})'))
                 split_task = asyncio.create_task(_split_files())
             else:
                 to_upload.append((filepath, filename))
@@ -329,3 +333,19 @@ async def progress_callback(current, total, client, message, reply, filename, us
         await message.reply_text(traceback.format_exc(), parse_mode=None)
         for admin_chat in ADMIN_CHATS:
             await client.send_message(admin_chat, traceback.format_exc(), parse_mode=None)
+
+
+def sf(filepath, filename, user_id):
+    ext = os.path.splitext(filename)[1]
+    args =  ["7z", "a", "-tzip", "-y", "-mx1"]
+    rf = str(user_id)+'/'+str(uuid4())[:8]
+    os.mkdir(rf)
+    args.append(os.path.join(rf, os.path.basename(filepath)[-(248-len(ext)):]+'.zip'))
+    args.append(filepath)
+    args.append("-v2000m")
+    proc = subprocess.Popen(args, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = proc.communicate()
+    if b"Everything is Ok" in out:
+        return rf
+    if b"ERROR" in out:
+        return None
