@@ -207,7 +207,7 @@ async def initiate_directdl(client, message, link, filename, flags):
     except asyncio.TimeoutError:
         await asyncio.gather(message.reply_text('Connection timed out'), reply.delete())
     else:
-        await handle_leech(client, message, gid, reply, user_id, flags)
+        await handle_leech(client, message, gid, reply, user_id, flags, None)
 
 leech_statuses = dict()
 async def handle_leech(client, message, gid, reply, user_id, flags, newFile):
