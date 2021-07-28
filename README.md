@@ -6,7 +6,7 @@
 
 
 <h2>USE THIS BRANCH ON YOUR RISK, I HAVE ADDED FILE-RENAMING IN TORRENT, MAGNET AND AUTO-DETECT FUNCTIONS IN THIS BRANCH</h2>
-<h3>Now this different file splitter that create multipart/spanned zip files, but when the file is splitting wont accept any cmd, tho will work out till end, no issues if not downloading 2GB+ files</h3>
+<h3>Now this have different file splitter that creates multipart/spanned zip files, but when the file is splitting wont accept any cmd, tho will work out till end, no issues if not downloading 2GB+ files</h3>
 <h3>Now this also have auto rename feature based on regex custom made on someone's request, it just remove stuff between brackets in torrent file name</h3>
 <pre>
 /filetorrent link | newFileName
