@@ -190,8 +190,8 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
         with tempfile.TemporaryDirectory(dir=str(user_id)) as tempdir:
             if file_has_big:
                 async def _split_files():
-                    rf = sf(filepath, filename, user_id)
                     await upload_wait.edit_text(f'Splitting {html.escape(filename)}..., Please wait')
+                    rf = sf(filepath, filename, user_id)
                     if rf is not None:
                         a = 0
                         for i in natsorted(os.listdir(rf)):
