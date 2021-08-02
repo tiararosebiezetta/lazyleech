@@ -189,8 +189,8 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
             filepath = newFileName
         with tempfile.TemporaryDirectory(dir=str(user_id)) as tempdir:
             if file_has_big:
+                await upload_wait.edit_text(f'Splitting {html.escape(filename)}..., Please wait')
                 async def _split_files():
-                    await upload_wait.edit_text(f'Splitting {html.escape(filename)}..., Please wait')
                     rf = sf(filepath, filename, user_id)
                     if rf is not None:
                         a = 0
