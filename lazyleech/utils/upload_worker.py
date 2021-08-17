@@ -26,6 +26,7 @@ import tempfile
 import traceback
 import subprocess
 from uuid import uuid4
+from pyrogram import StopTransmission
 from collections import defaultdict
 from natsort import natsorted
 from pyrogram.parser import html as pyrogram_html
@@ -267,9 +268,11 @@ async def _upload_file(client, message, reply, filename, filepath, force_documen
                             resp = await reply.reply_document(filepath, thumb=thumbnail, caption=filename,
                                                               parse_mode=None, progress=progress_callback,
                                                               progress_args=progress_args)
+                    except StopTransmission:
+                        resp = None
                     except Exception:
                         await message.reply_text(traceback.format_exc(), parse_mode=None)
-                        continue
+                        break
                     if resp:
                         sent_files.append((os.path.basename(filename), resp.link))
                         if LICHER_CHAT and reply.chat.id in ADMIN_CHATS and mimetype.startswith('video/') and resp.video:
