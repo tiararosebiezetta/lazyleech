@@ -84,7 +84,7 @@ async def torrent_cmd(client, message):
     await initiate_torrent(client, message, link, flags, nf)
     await message.stop_propagation()
 
-async def initiate_torrent(client, message, link, flags, newFile):
+async def initiate_torrent(client, message, link, flags, newFile: str = None):
     user_id = message.from_user.id
     reply = await message.reply_text('Adding torrent...')
     try:
@@ -130,7 +130,7 @@ async def magnet_cmd(client, message):
         return
     await initiate_magnet(client, message, link, flags, nf)
 
-async def initiate_magnet(client, message, link, flags, nf):
+async def initiate_magnet(client, message, link, flags, nf: str = None):
     user_id = message.from_user.id
     reply = await message.reply_text('Adding magnet...')
     try:
