@@ -7,6 +7,10 @@
   "repository": "https://github.com/lostb053/lazyleech",
   "stack": "container",
   "env":{
+        "LD_LIBRARY_PATH":{
+            "description":"This must be filled with: /app/.apt/usr/lib/x86_64-linux-gnu/pulseaudio",
+            "value":"/app/.apt/usr/lib/x86_64-linux-gnu/pulseaudio"
+        },
         "API_ID":{
             "description":"Get this value from https://my.telegram.org"
         },
