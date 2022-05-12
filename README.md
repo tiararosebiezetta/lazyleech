@@ -1,9 +1,7 @@
 # LazyLeech 
 
 <p align="center">
-“	Heroku Supported Telegram Torrent Leeching Bot by Some Weebs ” 
-
-## More features on [personal-tweak](https://github.com/lostb053/lazyleech/tree/personal-tweak) branch
+“	Heroku and Scalingo Supported Telegram Torrent Leeching Bot by Some Weebs ” 
 
 </p>
 
@@ -11,6 +9,7 @@
 - [WHAT IS THIS REPO ABOUT ?](#what-is-this-repo-about)
 - [FEATURES](#features)
 - [BOT COMMANDS](#bot-commands)
+- [SCALINGO DEPLOY](#scalingo-deploy)
 - [TEST THE BOT (DEMO)](https://t.me/joinchat/HC7YmklXMSRPH3N2)
 - [CREDITS](#credits-)
 - [POINTS TO BE NOTED](#points-to-be-noted)
@@ -81,6 +80,11 @@ delwatermark
 deletewatermark
 testwatermark
 ```
+## Scalingo Deploy
+
+[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/tiararosebiezetta/lazyleech#master)
+
+Credits to [@katarina_novi](https://t.me/katarina_novi) for scalingo deploy.<br>
 
 ## Credits 📍
 
