@@ -1,4 +1,6 @@
 #!/bin/sh
+pip install wheel
+pip install -r requirements.txt
 touch aria2.log lazyleech.log
 tail -f aria2.log &
 tail -f lazyleech.log &
